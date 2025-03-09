@@ -5,12 +5,12 @@ function displayDate() {
     document.getElementById('date').innerHTML = "<p>Today is: " + formattedDate + "</p>";
 }
 
-// Function to create a personalized greeting
+
 function createGreeting() {
     var hour = new Date().getHours();
     var greeting;
 
-    // Use a switch statement to determine the appropriate greeting
+    
     switch (true) {
         case hour < 12:
             greeting = "Good Morning";
@@ -23,15 +23,15 @@ function createGreeting() {
             break;
     }
 
-    // Prompt the user for their name
+    
     var name = prompt("Please enter your name:");
-    name = name.charAt(0).toUpperCase() + name.slice(1); // Capitalize the first letter
+    name = name.charAt(0).toUpperCase() + name.slice(1); 
 
-    // Display the greeting with the user's name
+    
     document.getElementById('greeting').innerHTML = "<p>" + greeting + ", " + name + "!</p>";
 }
 
-// Function to validate an email address using a regular expression
+
 function validateEmail() {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var email;
@@ -43,7 +43,7 @@ function validateEmail() {
         }
     } while (!emailRegex.test(email));
 
-    // Split the email into username and domain
+    
     var emailParts = email.split('@');
     var username = emailParts[0];
     var domain = emailParts[1];
@@ -52,7 +52,7 @@ function validateEmail() {
         "<p>Domain: " + domain + "</p>";
 }
 
-// Function to display a random quote of the day
+
 function displayQuote() {
     var quotes = [
         "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt",
