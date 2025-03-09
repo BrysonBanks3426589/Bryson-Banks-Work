@@ -114,4 +114,5 @@ displayQuestion();
 createGreeting();
 validateEmail();
 displayQuote();
+displayDate();
 quiz();
