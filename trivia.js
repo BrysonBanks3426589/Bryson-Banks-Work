@@ -53,19 +53,6 @@ function validateEmail() {
 }
 
 
-function displayQuote() {
-    var quotes = [
-        "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt",
-        "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
-        "In the middle of every difficulty lies opportunity. – Albert Einstein",
-        "The best way to predict the future is to create it. – Peter Drucker",
-        "Believe you can and you're halfway there. – Theodore Roosevelt"
-    ];
-
-    var randomIndex = Math.floor(Math.random() * quotes.length);
-    document.getElementById('quote').innerHTML = "<p>Quote of the Day: " + quotes[randomIndex] + "</p>";
-}
-
 var questions = [
     "Who is Batman?",
     "What is texas known for?",
@@ -113,6 +100,5 @@ function checkAnswer() {
 displayQuestion();
 createGreeting();
 validateEmail();
-displayQuote();
 displayDate();
 quiz();
