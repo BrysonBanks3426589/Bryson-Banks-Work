@@ -27,5 +27,60 @@ var currentDate = new Date();
 var currentMonth = currentDate.getMonth(); // 0-11
     var currentYear = currentDate.getFullYear();
     var monthName = months[currentMonth];
+    if (currentMonth === 11) {
+        $('h2').after('<h3>Happy Holidays!</h3>');
+    }
 
+    
+    $('#month').text('Tips for ' + monthName);
+
+    
+    $('footer p').append(' ' + currentYear);
+
+    
+    $('#specials').html(specials[currentMonth]);
+
+    
+    var season, bgImage, seasonColor, seasonIndex;
+
+    switch(currentMonth) {
+        case 11: // December
+        case 0:  // January
+        case 1:  // February
+            season = 'winter';
+            bgImage = 'winterbg.jpg';
+            seasonColor = '#00f';
+            seasonIndex = 0;
+            break;
+        case 2:  // March
+        case 3:  // April
+        case 4:  // May
+            season = 'spring';
+            bgImage = 'springbg.jpg';
+            seasonColor = '#d7d';
+            seasonIndex = 1;
+            break;
+        case 5:  // June
+        case 6:  // July
+        case 7:  // August
+            season = 'summer';
+            bgImage = 'summerbg.jpg';
+            seasonColor = '#006400';
+            seasonIndex = 2;
+            break;
+        case 8:  // September
+        case 9:  // October
+        case 10: // November
+            season = 'fall';
+            bgImage = 'fallbg.jpg';
+            seasonColor = '#930';
+            seasonIndex = 3;
+            break;
+    }
+
+ 
+    $('body').css('background-image', 'url(' + bgImage + ')');
+    $('#seasontips').html(tips[seasonIndex]);
+    $('strong, h1, h2, h3').css('color', seasonColor);
+    $('#specials').addClass(season);
 }
