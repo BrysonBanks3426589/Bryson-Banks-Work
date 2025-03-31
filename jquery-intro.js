@@ -83,4 +83,4 @@ var currentMonth = currentDate.getMonth(); // 0-11
     $('#seasontips').html(tips[seasonIndex]);
     $('strong, h1, h2, h3').css('color', seasonColor);
     $('#specials').addClass(season);
-}
+})
