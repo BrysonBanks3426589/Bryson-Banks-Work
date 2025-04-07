@@ -88,3 +88,29 @@ input[type='submit'] {
 	background-color: #afeeee;
 	text-align: center;
 }
+#pltTitle {
+    color: #07a;
+}
+
+.botanic {
+    color: darkgreen;
+    font-style: italic;
+}
+
+.col {
+    width: 20em;
+    padding: 1em;
+    float: left;
+}
+
+footer {
+    clear: both;
+}
+
+.pic {
+    border-bottom: thin dashed darkgreen;
+}
+
+.imgdiv {
+    position: absolute;
+}
