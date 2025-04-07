@@ -1,29 +1,29 @@
 $(document).ready(function() {
-    // Hide all botanical names when page loads
+    
     $('.botanic').hide();
     
-    // Hide all image divs when page loads
+    
     $('.imgdiv').hide();
     
-    // Mouseover/mouseout for headings
+    
     $('h1, h2').hover(
-        function() { // mouseover
+        function() { 
             $(this).css('color', '#07a');
         },
-        function() { // mouseout
+        function() { 
             $(this).css('color', 'darkgreen');
         }
     );
     
-    // Click event for flower names
+    
     $('.flower').click(function() {
-        $('.botanic').hide(); // hide all botanical names
-        $(this).children('.botanic').show(); // show current one
+        $('.botanic').hide(); 
+        $(this).children('.botanic').show(); 
     });
     
-    // Hover event for flower names with images
+    
     $('.pic').hover(
-        function(evt) { // mouseover
+        function(evt) { 
             var flowerId = '#' + $(this).attr('title');
             var x = evt.pageX + 150;
             var y = evt.pageY;
@@ -32,13 +32,13 @@ $(document).ready(function() {
                 'left': x + 'px'
             }).show();
         },
-        function() { // mouseout
+        function() { 
             var flowerId = '#' + $(this).attr('title');
             $(flowerId).hide();
         }
     );
     
-    // Keypress event for jumping to letters
+
     $(document).keypress(function(e) {
         var keyPressed = String.fromCharCode(e.which).toLowerCase();
         window.location = '#' + keyPressed;
