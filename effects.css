@@ -2,6 +2,7 @@ body {
 	background: url(springbg.jpg);
 	background-size: 100%;
 	background-repeat: repeat-y;
+	font-family: Arial, Helvetica, sans-serif;
 }
 #container {
 	width: 50em;
@@ -10,62 +11,41 @@ body {
 	background-color: rgba(255,255,255,.9);
 	padding: 1em;
 	font-family: Arial, Helvetica, sans-serif;
-	position: relative;
 }
 h1, h2, h3 {
 	color: darkgreen;
 	text-align: center;
 	font-family: "Comic Sans MS";
 }
-
-
 #newsSignup {
 	display: none;
+	margin-top: 10px;
+	padding: 15px;
+	background-color: rgba(255, 255, 240, 0.9);
+	border: 1px solid darkgreen;
+	border-radius: 5px;
 }
-#signuplink:focus + #newsSignup,
-#newsSignup:focus-within {
+#newsSignup label {
 	display: block;
-	animation: fadeIn 0.5s ease-in-out;
+	margin-bottom: 10px;
 }
-#signuplink:focus span#openclose::before {
-	content: "-";
+#newsSignup input[type="text"],
+#newsSignup input[type="email"] {
+	width: 100%;
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 1px solid darkgreen;
+	border-radius: 3px;
 }
-
-
+#newsletter {
+	margin: 20px 0;
+}
 #rose {
 	position: absolute;
-	right: 100px;
+	right: -100px;
 	top: 20px;
-	opacity: 1;
-	animation: slideIn 2s ease-in-out;
+	opacity: 0;
 }
-
-
-#slogan {
-	display: inline-block;
-}
-#slogan:hover::after {
-	content: 'Hand Picked Just for You';
-	animation: fadeInOut 2s ease-in-out;
-}
-#slogan:hover span {
-	display: none;
-}
-
-
-#slideIn {
-	from {
-		right: -100px;
-		opacity: 0;
-	}
-	to {
-		right: 100px;
-		opacity: 1;
-	}
-}
-
- #fadeInOut {
-	0% { opacity: 0; }
-	50% { opacity: 1; }
-	100% { opacity: 1; }
+#container {
+	position: relative;
 }
