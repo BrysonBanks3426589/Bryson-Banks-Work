@@ -1,4 +1,4 @@
-body {
+	`z`	   body {
 	background: url(springbg.jpg);
 	background-size: 100%;
 	background-repeat: repeat-y;
@@ -87,4 +87,13 @@ input[type='submit'] {
 .Spring {
 	background-color: #afeeee;
 	text-align: center;
+}
+#rose {
+	position: absolute;
+	right: -100px;
+	top: 20px;
+	opacity: 0;
+}
+	#container {
+	position: relative;
 }
