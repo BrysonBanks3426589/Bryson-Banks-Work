@@ -112,3 +112,14 @@ footer {
 .pic {
 	border-bottom: thin dashed darkgreen;
 }
+.confirmation {
+	background: #f8f8f8;
+	border: 1px solid #ddd;
+	padding: 20px;
+	margin: 20px 0;
+	border-radius: 5px;
+}
+.confirmation h3 {
+	color: #2a7221;
+	margin-top: 0;
+}
