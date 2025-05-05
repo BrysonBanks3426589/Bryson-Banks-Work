@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    
     $('#name').focus();
 
     
@@ -7,101 +6,42 @@ $(document).ready(function() {
     $('#shipaddr, #shipcity, #shipzip').blur(validateShippingField);
 
     
-    function validateField() {
-        const field = $(this);
-        const fieldId = field.attr('id');
-        const value = field.val().trim();
-        const errorSpan = $('#' + fieldId + 'Err');
-        
-        if (fieldId === 'name' || fieldId === 'address' || fieldId === 'city') {
-            if (value === '') {
-                errorSpan.text('This field is required');
-                return false;
-            }
-        } 
-        else if (fieldId === 'zip') {
-            if (!/^\d{5}$/.test(value)) {
-                errorSpan.text('Must be 5 digit number');
-                return false;
-            }
-        }
-        else if (fieldId === 'email') {
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                errorSpan.text('Invalid email format');
-                return false;
-            }
-        }
-        
-        errorSpan.text('');
-        return true;
-    }
-
-    
-    function validateShippingField() {
-        if ($('#copy').is(':checked')) return true;
-        
-        const field = $(this);
-        const fieldId = field.attr('id');
-        const value = field.val().trim();
-        const errorSpan = $('#' + fieldId + 'Err');
-        
-        if (fieldId === 'shipaddr' || fieldId === 'shipcity') {
-            if (value === '') {
-                errorSpan.text('This field is required');
-                return false;
-            }
-        } 
-        else if (fieldId === 'shipzip') {
-            if (!/^\d{5}$/.test(value)) {
-                errorSpan.text('Must be 5 digit number');
-                return false;
-            }
-        }
-        
-        errorSpan.text('');
-        return true;
-    }
-
-    
     $('#copy').change(function() {
         if ($(this).is(':checked')) {
-            $('#shipaddr').val($('#address').val());
-            $('#shipcity').val($('#city').val());
-            $('#shipzip').val($('#zip').val());
+            $('#shipaddr').val($('#address').val()).trigger('blur');
+            $('#shipcity').val($('#city').val()).trigger('blur');
+            $('#shipzip').val($('#zip').val()).trigger('blur');
             $('#shipstate').val($('#state').val());
-            $('#shipping span.error').text('');
+            $('.shipping span.error').text('');
+        } else {
+            $('#shipaddr, #shipcity, #shipzip').val('');
         }
     });
 
-
-    $('.qty').on('blur', function() {
+   
+    function calculateOrder() {
         let orderTotal = 0;
         
-        
         $('.qty').each(function() {
-            const index = $(this).attr('id');
+            const index = $(this).attr('id').replace('qty', '');
             let qty = parseInt($(this).val()) || 0;
             $(this).val(qty); 
             
-            const price = parseFloat($('#price' + index).text());
+            const price = parseFloat($('#price' + index).text().replace('$', ''));
             const total = price * qty;
-            $('#total' + index).text(total.toFixed(2));
+            $('#total' + index).text('$' + total.toFixed(2));
             
             orderTotal += total;
         });
         
-        
-        $('#subt').text(orderTotal.toFixed(2));
-        
+        $('#subt').text('$' + orderTotal.toFixed(2));
         
         const state = $('#shipstate').val();
         let tax = 0;
         if (state === 'TX') {
-            tax = orderTotal * 0.08;
+            tax = orderTotal * 0.0825;
         }
-        $('#tax').text(tax.toFixed(2));
-        orderTotal += tax;
-        
+        $('#tax').text('$' + tax.toFixed(2));
         
         let shipping = 10;
         if (state === 'TX') {
@@ -109,18 +49,23 @@ $(document).ready(function() {
         } else if (state === 'CA' || state === 'NY') {
             shipping = 20;
         }
-        $('#ship').text(shipping.toFixed(2));
-        orderTotal += shipping;
+        $('#ship').text('$' + shipping.toFixed(2));
         
-        
-        $('#gTotal').text(orderTotal.toFixed(2));
-    });
+        $('#gTotal').text('$' + (orderTotal + tax + shipping).toFixed(2));
+    }
 
     
+    $('.qty').on('change keyup blur', calculateOrder);
+    $('#state, #shipstate').change(calculateOrder);
+
+    
+    calculateOrder();
+
+   
     $('#order').submit(function(e) {
         let isValid = true;
         
-        
+       
         $('#name, #address, #city, #zip, #email').each(function() {
             if (!validateField.call(this)) {
                 isValid = false;
@@ -142,7 +87,7 @@ $(document).ready(function() {
             totalQty += parseInt($(this).val()) || 0;
         });
         
-        if (totalQty === 0) {
+        if (totalQty <= 0) {
             $('#orderErr').text('Please order at least one item');
             isValid = false;
         } else {
@@ -153,4 +98,13 @@ $(document).ready(function() {
             e.preventDefault();
         }
     });
+
+    
+    function validateField() {
+        
+    }
+
+    function validateShippingField() {
+       
+    }
 });
