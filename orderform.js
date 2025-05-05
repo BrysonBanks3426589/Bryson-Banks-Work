@@ -5,20 +5,26 @@ $(document).ready(function() {
     $('#name, #address, #city, #zip, #email').blur(validateField);
     $('#shipaddr, #shipcity, #shipzip').blur(validateShippingField);
 
-    
     $('#copy').change(function() {
         if ($(this).is(':checked')) {
+            
             $('#shipaddr').val($('#address').val()).trigger('blur');
             $('#shipcity').val($('#city').val()).trigger('blur');
             $('#shipzip').val($('#zip').val()).trigger('blur');
             $('#shipstate').val($('#state').val());
-            $('.shipping span.error').text('');
+            
+            
+            $('#shipaddrErr, #shipcityErr, #shipzipErr').text('');
+            
+           
+            $('#shipaddr, #shipcity, #shipzip, #shipstate').prop('disabled', true);
         } else {
+            
             $('#shipaddr, #shipcity, #shipzip').val('');
+            $('#shipaddr, #shipcity, #shipzip, #shipstate').prop('disabled', false);
         }
+        calculateOrder(); 
     });
-
-   
     function calculateOrder() {
         let orderTotal = 0;
         let hasItems = false;
