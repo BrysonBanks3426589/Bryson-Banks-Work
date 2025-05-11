@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Secret Number Game</title>
+        <link rel="stylesheet" href="Number.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>Secret Number Game</h1>
+            <p>
+                <script>
+                    
+                    var secretNumber = 2;
+
+                    var guess = prompt("What's your favorite number (between 1 and 10)?");
+                    guess = parseInt(guess);
+
+                    while (isNaN(guess)) {
+                        guess = prompt("That's not a number! What's your favorite number (between 1 and 10)?");
+                        guess = parseInt(guess);
+                    }
+
+                    if (guess == secretNumber) {
+                        var points = 10;
+                        document.write("Congratulations! You guessed the secret number (" + secretNumber + "). You earned " + points + " points!");
+                    } else {
+                        document.write(" Wrong number, the secret number was " + secretNumber + ". You earned 0 points.");
+                    }
+                </script>
+            </p>
+        </div>
+    </body>
+</html>

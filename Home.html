@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Home Page</title>
+        <link rel="stylesheet" href="Home.css" />
+        <script>
+            window.onload = function() {
+                let visitorName = prompt("Please enter your name:", "Guest");
+                if (visitorName) {
+                    alert("Welcome to my site, " + visitorName + "!");
+                    document.getElementById("header-title").innerText = "Welcome, " + visitorName + "!";
+                }
+            };
+        </script>
+    </head>
+    <body>
+       <header>
+               <h1>My Home Page</h1>
+        </header>
+
+    <nav>
+        <a href="https://brysonbanks3426589.github.io/Bryson-Banks-Work/">Home</a>
+    </nav>
+      
+    <div>
+        <h2>Professional goals</h2>
+        <p>One of my Professional goals is to improve my time management skills for future occupations that require more time to do the work.</p>
+        
+        <p>Enhance work-life balance to prevent burnout.</p>
+
+        <P>I plan on enhancing my networking skills, so i can obtain more job opportunities</P>
+
+        <p><span>Fun Fact:</span> I love exploring new technologies</p>
+    </div>
+
+
+      <img src="Rotweiler.jpg" height="200" width="300">
+    </body>
+</html>
