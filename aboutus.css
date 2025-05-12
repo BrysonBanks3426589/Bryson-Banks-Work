@@ -14,7 +14,9 @@ header {
     padding: 1rem 0;
     text-align: center;
 }
-
+li{
+    display: inline;
+}
 nav ul {
     display: flex;
     flex-wrap: wrap;
